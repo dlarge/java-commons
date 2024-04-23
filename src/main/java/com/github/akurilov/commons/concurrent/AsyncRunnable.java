@@ -1,11 +1,12 @@
 package com.github.akurilov.commons.concurrent;
 
 import java.io.Closeable;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.concurrent.TimeUnit;
 
 public interface AsyncRunnable
-extends Closeable {
+extends Remote, Closeable {
 
 	enum State {
 		INITIAL, STARTED, SHUTDOWN, STOPPED, CLOSED
