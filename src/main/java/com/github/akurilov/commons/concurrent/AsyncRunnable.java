@@ -1,12 +1,12 @@
 package com.github.akurilov.commons.concurrent;
 
-import java.io.Closeable;
+import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.concurrent.TimeUnit;
 
 public interface AsyncRunnable
-extends Remote, Closeable {
+extends Remote {
 
 	enum State {
 		INITIAL, STARTED, SHUTDOWN, STOPPED, CLOSED
@@ -79,4 +79,10 @@ extends Remote, Closeable {
 
 	boolean await(final long timeout, final TimeUnit timeUnit)
 	throws InterruptedException, RemoteException;
+
+	/**
+	 * Closeable with remote
+	 */
+	void close()
+	throws IOException, RemoteException;
 }
